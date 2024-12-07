@@ -1,0 +1,51 @@
+.bg-custom {
+    background-color: #e9f1fa;
+}
+
+#meter-readings {
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+#RT-name {
+    margin-top: 15px;
+    background-color: #070A52;
+}
+
+#subList {
+    background-color: #00337C;
+}
+
+.font-family-sans {
+    font-family: 'Lucida Console', 'Courier New', monospace;
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+#heading {
+    display: flex;
+    justify-content: space-between;
+}
+#heading img {
+    height: 4rem;
+}
