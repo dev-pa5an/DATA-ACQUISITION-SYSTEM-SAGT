@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="/static/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/bootstrap.css">
+
+  <title>Running Hours</title>
+</head>
+
+<body>
+  <div class="container-fluid" id="heading">
+    <img src="/static/logo.png" alt="sagt" class="img-fluid">
+  </div>
+
+  <div class="container-fluid bg-custom" id="meter-readings">
+    <div class="container-fluid text-black" id="RT-name">
+      <p class="font-family-sans text-white">RTG LIST</p>
+    </div>
+  </div>
+
+  <div class="container my-4">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="/static/rtg.JPG" alt="sagt" class="img-fluid">
+      </div>
+      <div class="col-md-7">
+        <div class="container-fluid" id="subList">
+          <p class="font-family-sans text-white">RTG CRANES - RUNNING HOURS</p>
+        </div>
+        <table id="contentTable" class="table">
+          <thead>
+            <tr>
+              <th class="text-center">RTG UNIT</th>
+              <th class="text-center">HOIST</th>
+              <th class="text-center">TROLLY</th>
+              <th class="text-center">GANTRY</th>
+              <th class="text-center">CONTROL ON</th>
+              <th class="text-center">RUNNING STATUS</th>
+              <th class="text-center">BATTERY SOC</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            
+            <tr>
+              <td class="text-center">RT17</td>
+              <td id="Hoist17" class="text-center">7475</td>
+              <td id="Trolly17" class="text-center">4566</td>
+              <td id="Gantry17" class="text-center">2417</td>
+              <td id="Control17" class="text-center">8017</td>
+              <td id="Indicator17" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              <td id="Battery17" class="text-center">57%</td>
+            </tr>
+            <tr>
+              <td class="text-center">RT23</td>
+              <td id="Hoist23" class="text-center">8836.5</td>
+              <td id="Trolly23" class="text-center">5088.6</td>
+              <td id="Gantry23" class="text-center">2575.3</td>
+              <td id="Control23" class="text-center">9017</td>
+              <td id="Indicator23" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              <td id="Battery23" class="text-center">53%</td>
+            </tr>
+            <tr>
+              <td class="text-center">RT33</td>
+              <td id="Hoist33" class="text-center">7531</td>
+              <td id="Trolly33" class="text-center">2093</td>
+              <td id="Gantry33" class="text-center">3879</td>
+              <td id="Control33" class="text-center">8033</td>
+              <td id="Indicator33" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              <td id="Battery33" class="text-center">33%</td>
+            </tr>
+            <tr>
+              <td class="text-center">RT34</td>
+              <td id="Hoist34" class="text-center">8836.5</td>
+              <td id="Trolly34" class="text-center">5088.6</td>
+              <td id="Gantry34" class="text-center">2575.3</td>
+              <td id="Control34" class="text-center">9017</td>
+              <td id="Indicator34" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              <td id="Battery34" class="text-center">64%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid bg-custom" id="meter-readings">
+    <div class="container-fluid text-black" id="RT-name">
+      <p class="font-family-sans text-white">QC LIST</p>
+    </div>
+  </div>
+
+  <div class="container my-4">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="/static/qc.JPG" alt="sagt" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <div class="container-fluid" id="subList">
+          <p class="font-family-sans text-white">STS CRANES - RUNNING HOURS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="/static/index.js"></script>
+</body>
+
+</html>
