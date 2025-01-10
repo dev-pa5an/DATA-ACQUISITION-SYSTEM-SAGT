@@ -38,17 +38,29 @@
         <table id="contentTable" class="table">
           <thead>
             <tr>
-              <th class="text-center">RTG UNIT</th>
+              <th class="text-center">RTG</th>
               <th class="text-center">HOIST</th>
               <th class="text-center">TROLLY</th>
               <th class="text-center">GANTRY</th>
               <th class="text-center">CONTROL ON</th>
               <th class="text-center">RUNNING STATUS</th>
               <th class="text-center">BATTERY SOC</th>
+              <th class="text-center">ALERTS</th>
             </tr>
           </thead>
           <tbody id="tableBody">
-            
+            <tr>
+              <td class="text-center">RT09</td>
+              <td id="Hoist09" class="text-center">7475</td>
+              <td id="Trolly09" class="text-center">4566</td>
+              <td id="Gantry09" class="text-center">2417</td>
+              <td id="Control09" class="text-center">8017</td>
+              <td id="Indicator09" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              <td id="Battery09" class="text-center">69%</td>
+              <td id="Alert09" class="text-center"><img src="static/alert-green.png" alt="sagt" class="img-fluid"></td>
+            </tr>
             <tr>
               <td class="text-center">RT17</td>
               <td id="Hoist17" class="text-center">7475</td>
@@ -59,6 +71,7 @@
                 <img src="/static/red.png" style="height: 30px; width: 30px;">
               </td>
               <td id="Battery17" class="text-center">57%</td>
+              <td id="Alert09" class="text-center"><img src="static/alert-green.png" alt="sagt" class="img-fluid"></td>
             </tr>
             <tr>
               <td class="text-center">RT23</td>
@@ -70,6 +83,7 @@
                 <img src="/static/red.png" style="height: 30px; width: 30px;">
               </td>
               <td id="Battery23" class="text-center">53%</td>
+              <td id="Alert09" class="text-center"><img src="static/alert-green.png" alt="sagt" class="img-fluid"></td>
             </tr>
             <tr>
               <td class="text-center">RT33</td>
@@ -81,6 +95,7 @@
                 <img src="/static/red.png" style="height: 30px; width: 30px;">
               </td>
               <td id="Battery33" class="text-center">33%</td>
+              <td id="Alert09" class="text-center"><img src="static/alert-green.png" alt="sagt" class="img-fluid"></td>
             </tr>
             <tr>
               <td class="text-center">RT34</td>
@@ -92,6 +107,7 @@
                 <img src="/static/red.png" style="height: 30px; width: 30px;">
               </td>
               <td id="Battery34" class="text-center">64%</td>
+              <td id="Alert09" class="text-center"><img src="static/alert-green.png" alt="sagt" class="img-fluid"></td>
             </tr>
           </tbody>
         </table>
@@ -110,10 +126,137 @@
       <div class="col-md-4">
         <img src="/static/qc.JPG" alt="sagt" class="img-fluid">
       </div>
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div class="container-fluid" id="subList">
           <p class="font-family-sans text-white">STS CRANES - RUNNING HOURS</p>
         </div>
+        <table id="contentTableQC" class="table">
+          <thead>
+            <tr>
+              <th class="text-center">QC UNIT</th>
+              <th class="text-center">HOIST</th>
+              <th class="text-center">TROLLY</th>
+              <th class="text-center">GANTRY</th>
+              <th class="text-center">CONTROL ON</th>
+              <th class="text-center">RUNNING STATUS</th>
+              <th class="text-center">ALERTS</th>
+            </tr>
+          </thead>
+          <tbody id="tableBodyQC">
+            <tr>
+              <td class="text-center">QC01</td>
+              <td id="QCHoist01" class="text-center">NaN</td>
+              <td id="QCTrolly01" class="text-center">NaN</td>
+              <td id="QCGantry01" class="text-center">NaN</td>
+              <td id="QCControl01" class="text-center">NaN</td>
+              <td id="QCIndicator01" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              <tr>
+                <td class="text-center">QC05</td>
+              <td id="QCHoist05" class="text-center">NaN</td>
+              <td id="QCTrolly05" class="text-center">NaN</td>
+              <td id="QCGantry05" class="text-center">NaN</td>
+              <td id="QCControl05" class="text-center">NaN</td>
+              <td id="QCIndicator05" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              </tr>
+              <tr>
+                <td class="text-center">QC06</td>
+              <td id="QCHoist06" class="text-center">NaN</td>
+              <td id="QCTrolly06" class="text-center">NaN</td>
+              <td id="QCGantry06" class="text-center">NaN</td>
+              <td id="QCControl06" class="text-center">NaN</td>
+              <td id="QCIndicator06" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              </tr>
+              <tr>
+                <td class="text-center">QC07</td>
+              <td id="QCHoist07" class="text-center">NaN</td>
+              <td id="QCTrolly07" class="text-center">NaN</td>
+              <td id="QCGantry07" class="text-center">NaN</td>
+              <td id="QCControl07" class="text-center">NaN</td>
+              <td id="QCIndicator07" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              </tr>
+              <tr>
+                <td class="text-center">QC07</td>
+              <td id="QCHoist07" class="text-center">NaN</td>
+              <td id="QCTrolly07" class="text-center">NaN</td>
+              <td id="QCGantry07" class="text-center">NaN</td>
+              <td id="QCControl07" class="text-center">NaN</td>
+              <td id="QCIndicator07" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              </tr>
+              <tr>
+                <td class="text-center">QC13</td>
+              <td id="QCHoist13" class="text-center">NaN</td>
+              <td id="QCTrolly13" class="text-center">NaN</td>
+              <td id="QCGantry13" class="text-center">NaN</td>
+              <td id="QCControl13" class="text-center">NaN</td>
+              <td id="QCIndicator13" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              </tr>
+              <tr>
+                <td class="text-center">QC14</td>
+              <td id="QCHoist14" class="text-center">NaN</td>
+              <td id="QCTrolly14" class="text-center">NaN</td>
+              <td id="QCGantry14" class="text-center">NaN</td>
+              <td id="QCControl14" class="text-center">NaN</td>
+              <td id="QCIndicator14" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              </tr>
+              <tr>
+                <td class="text-center">QC08</td>
+              <td id="QCHoist08" class="text-center">NaN</td>
+              <td id="QCTrolly08" class="text-center">NaN</td>
+              <td id="QCGantry08" class="text-center">NaN</td>
+              <td id="QCControl08" class="text-center">NaN</td>
+              <td id="QCIndicator08" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              </tr>
+              <tr>
+                <td class="text-center">QC09</td>
+              <td id="QCHoist09" class="text-center">NaN</td>
+              <td id="QCTrolly09" class="text-center">NaN</td>
+              <td id="QCGantry09" class="text-center">NaN</td>
+              <td id="QCControl09" class="text-center">NaN</td>
+              <td id="QCIndicator09" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              </tr>
+              <tr>
+                <td class="text-center">QC11</td>
+              <td id="QCHoist11" class="text-center">NaN</td>
+              <td id="QCTrolly11" class="text-center">NaN</td>
+              <td id="QCGantry11" class="text-center">NaN</td>
+              <td id="QCControl11" class="text-center">NaN</td>
+              <td id="QCIndicator11" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              </tr>
+              <tr>
+                <td class="text-center">QC12</td>
+              <td id="QCHoist12" class="text-center">NaN</td>
+              <td id="QCTrolly12" class="text-center">NaN</td>
+              <td id="QCGantry12" class="text-center">NaN</td>
+              <td id="QCControl12" class="text-center">NaN</td>
+              <td id="QCIndicator12" class="text-center">
+                <img src="/static/red.png" style="height: 30px; width: 30px;">
+              </td>
+              </tr>
+              
+              
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
