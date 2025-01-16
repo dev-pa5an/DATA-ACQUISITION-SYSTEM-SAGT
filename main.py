@@ -7,14 +7,14 @@ import uvicorn
 
 app = FastAPI()
 
-# Serve static files (important for images, CSS, JS)
+# Serve static files 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Configure templates
 templates = Jinja2Templates(directory="templates")
 
 
-# OPC UA configuration (replace with your actual details)
+# OPC UA configuration
 opcua_url_17 = "opc.tcp://10.95.250.30:4840" #RT17
 opcua_url_23 = "opc.tcp://10.95.250.123:4840" #RT23
 opcua_url_33 = "opc.tcp://10.95.250.40:4840" #RT33
@@ -29,7 +29,7 @@ node_ids_09 = {
     "soc1": "ns=4;s=soc_1",
     "soc2": "ns=4;s=soc_2",
     "soc3": "ns=4;s=soc_3"
-    # ..4 any other nodes you need
+    
 }
 node_ids_17 = {
     "hoist": "ns=4;s=hoist_hours",
@@ -40,7 +40,7 @@ node_ids_17 = {
     "soc1": "ns=4;s=soc_1",
     "soc2": "ns=4;s=soc_2",
     "soc3": "ns=4;s=soc_3"
-    # ... any other nodes you need
+
 }
 node_ids_33 = {
     "hoist": "ns=3;s=hoist_hours",
@@ -51,7 +51,7 @@ node_ids_33 = {
     "soc2": "ns=3;s=soc_2",
     "soc3": "ns=3;s=soc_3",
     "control_on_state": "ns=3;s=CTRLON"
-    # ... any other nodes you need
+   
 }
 node_ids_34 = {
     "hoist": "ns=3;s=hoist_hours",
@@ -62,7 +62,7 @@ node_ids_34 = {
     "soc2": "ns=3;s=soc_2",
     "soc3": "ns=3;s=soc_3",
     "control_on_state": "ns=3;s=CTRLON"
-    # ... any other nodes you need
+    
 }
 node_ids_23 = {
     "hoist": "ns=4;s=hoist_hours",
@@ -73,7 +73,7 @@ node_ids_23 = {
     "soc2": "ns=3;s=soc_2",
     "soc3": "ns=3;s=soc_3",
     "control_on_state": "ns=4;s=Master_control_relay"
-    # ... any other nodes you need
+    
 }
 
 async def get_node_value(opcua_url, node_id):  # Asynchronous function
@@ -84,7 +84,7 @@ async def get_node_value(opcua_url, node_id):  # Asynchronous function
             return value
     except Exception as e: # Catching any exception during connection
         print(f"Error reading OPC UA node {node_id}: {e}")
-        return None  # Or handle the error as needed
+        return None 
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_home(request: Request):
