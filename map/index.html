@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Leaflet Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map { height: 700px; width: 950px;}
+        #data-table { margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h2>Real-time Data Sharing with WebSockets</h2>
+    <div id="map"></div>
+
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody id="data-body">
+        </tbody>
+    </table>
+
+    <script>
+        var ws = new WebSocket("ws://localhost:3000");
+        // Initialize the map
+        var map = L.map('map').setView([51.49532, -0.07], 16); // Set the center coordinates and zoom level
+
+        // Define the bounds for your custom image
+        var imageUrl = 'map.jpg'; // Path to your custom image (replace with the correct path)
+        var imageBounds = [[51.49, -0.08], [51.5, -0.06]]; // Define the geographical bounds (top-left and bottom-right corners)
+
+        // Add the image as an overlay on the map
+        L.imageOverlay(imageUrl, imageBounds).addTo(map);
+
+        // Handle WebSocket messages
+        ws.onmessage = function(event) {
+            var message = JSON.parse(event.data);
+
+            if (message.type === "initialize") {
+                message.data.forEach(addRow);
+            } else if (message.type === "newEntry") {
+                addRow(message.data);
+            }
+        };
+        // Add marker function
+        function addMarker(markerData, emit = true) {
+            const marker = L.marker([markerData.lat, markerData.lng], { draggable: true }).addTo(map);
+
+            marker.on("dragend", function () {
+                const { lat, lng } = marker.getLatLng();
+                socket.emit("update_marker", { id: markerData.id, lat, lng });
+            });
+
+            markers[markerData.id] = marker;
+
+            if (emit) {
+                socket.emit("add_marker", markerData);
+            }
+        }
+        function addRow(data) {
+            var tableBody = document.getElementById("data-body");
+            var row = tableBody.insertRow();
+            row.insertCell(0).textContent = data.name;
+            row.insertCell(1).textContent = data.age;
+        }
+
+        map.on("click", function (e) {
+            const markerData = {
+            id: Date.now().toString(),
+            lat: e.latlng.lat,
+            lng: e.latlng.lng,
+            };
+            
+            var name = prompt("Enter Name:");
+            var age = prompt("Enter Age:");
+
+            if (name && age) {
+                var data = { name, age };
+                ws.send(JSON.stringify({ type: "newEntry", data }));
+            }
+            addMarker(markerData, true);
+        });
+    </script>
+</body>
+</html>
