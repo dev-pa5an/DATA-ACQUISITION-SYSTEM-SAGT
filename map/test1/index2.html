@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask WebSocket Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <style>
+        #map { height: 500px; }
+        #data-table { margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h2>Flask WebSocket with Custom Map</h2>
+    <div id="map"></div>
+
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody id="data-body"></tbody>
+    </table>
+
+    <script>
+        var socket = io.connect("http://localhost:5000");
+        var map = L.map('map').setView([0, 0], 2);
+
+        // Load Custom Image Map
+        var imageUrl = "/static/map.jpg";  // Ensure you place map.jpg in static folder
+        var imageBounds = [[0, 0], [1000, 1000]];
+        L.imageOverlay(imageUrl, imageBounds).addTo(map);
+        map.fitBounds(imageBounds);
+
+        // Handle WebSocket Messages
+        socket.on("initialize", function(data) {
+            data.forEach(addRow);
+        });
+
+        socket.on("newEntry", function(data) {
+            addRow(data);
+        });
+
+        function addRow(data) {
+            var tableBody = document.getElementById("data-body");
+            var row = tableBody.insertRow();
+            row.insertCell(0).textContent = data.name;
+            row.insertCell(1).textContent = data.age;
+        }
+
+        map.on("click", function (e) {
+            var name = prompt("Enter Name:");
+            var age = prompt("Enter Age:");
+            if (name && age) {
+                socket.emit("newEntry", { name, age });
+            }
+        });
+    </script>
+</body>
+</html>
